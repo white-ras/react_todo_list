@@ -1,13 +1,19 @@
 import { Button, Form, InputGroup } from "react-bootstrap"
-import { AddTodo } from "../../hooks/useAddTodo";
 
-export const InputAndAddButton = () => {
+export const InputAndAddButton = ({todos, setTodos}) => {
   // const todoList = document.getElementById("js-todo-list");
 
   const onClickAdd = (event) => {
     const inputElement = event.target.previousElementSibling;
     const todoText = inputElement.value;
-    AddTodo(todoText);
+    if(todoText === "") return;
+    const newTodo = {
+        text: todoText,
+        completed: false
+      };
+    const newTodos = [...todos, newTodo]
+    setTodos(newTodos);
+
     inputElement.value = "";
   }
 

@@ -22,7 +22,7 @@ function App() {
       <Container className="mt-5">
         <Header />
 
-        <InputAndAddButton/>
+        <InputAndAddButton todos={todos} setTodos={setTodos}/>
         <div class="mt-5" id="js-todo-list">
 
           <TodoList todos={todos}/>
