@@ -25,7 +25,7 @@ function App() {
         <InputAndAddButton todos={todos} setTodos={setTodos}/>
         <div class="mt-5" id="js-todo-list">
 
-          <TodoList todos={todos}/>
+          <TodoList todos={todos} setTodos={setTodos}/>
         </div>
 
       <ListFooter />

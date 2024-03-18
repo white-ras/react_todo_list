@@ -1,6 +1,6 @@
 import { TodoItem } from "../molecules/TodoItem"
 
-export const TodoList = ({ todos }) => {
+export const TodoList = ({ todos, setTodos}) => {
   return (
     <div>
       {todos.map((todo, index) => (
@@ -8,6 +8,8 @@ export const TodoList = ({ todos }) => {
           id={index}
           text={todo.text}
           completed={todo.completed}
+          todos={todos}
+          setTodos={setTodos}
         />
 
       ))}
