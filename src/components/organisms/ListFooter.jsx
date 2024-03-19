@@ -1,9 +1,13 @@
 import { Navbar } from "react-bootstrap"
 
-export const ListFooter = () => {
+export const ListFooter = ({ todos }) => {
+  const all = todos.length;
+  const completed = todos.filter(todo => todo.completed === true).length;
+  const incomplete = all - completed;
+
   return (
     <Navbar className="mb-5"bg="secondary" variant="light" expand="lg" >
-      <p>全てのタスク：３ 完了済み：１ 未完了：２</p>
+      <p>全てのタスク：{all} 完了済み：{completed} 未完了：{incomplete}</p>
     </Navbar>
 
   )

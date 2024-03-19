@@ -12,6 +12,7 @@ export const TodoItem = (props) => {
   }
 
   const onClickDelete = () => {
+    
     const newTodos = [...todos];
     newTodos.splice(id, 1);// 何番目から何個削除するか
     setTodos(newTodos);

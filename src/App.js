@@ -28,8 +28,7 @@ function App() {
           <TodoList todos={todos} setTodos={setTodos}/>
         </div>
 
-      <ListFooter />
-
+      <ListFooter todos={todos} />
       </Container>
     </>
   );
