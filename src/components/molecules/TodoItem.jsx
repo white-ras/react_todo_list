@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap"
+import { TodoItemShow } from "./TodoItemShow";
+import { TodoItemEdit } from "./TodoItemEdit";
 
 export const TodoItem = (props) => {
-  const { todos, setTodos, id, text, completed = false } = props;
+  const [ edited, setEdited ] = useState(false);
 
-  const textDecoration = completed === true ? "line-through" : "none";
+  const { todos, setTodos, id, text, completed = false } = props;
 
   const hadleCheckboxChange = (event) => {
     const newTodos = [...todos];
@@ -21,28 +24,25 @@ export const TodoItem = (props) => {
   }
 
   const onClickEdit = (event) => {
-    const inputElement = event.target.previousElementSibling;
-    inputElement.disabled=false;
-    // 前の要素を取得、disabled=false、deleteボタン削除、編集ボタン削除、保存ボタン追加。
+    setEdited(true);
   }
 
   return (
-    <InputGroup className="mb-3">
-      <InputGroup.Checkbox
-        aria-label="Checkbox for following text input"
-        checked={completed}
-        onChange={hadleCheckboxChange}
-      />
-
-      <Form.Control
-        aria-label="Text input with checkbox"
-        value={text}
-        disabled="true"
-        style={{ textDecoration: textDecoration }}
-      />
-      <Button variant="outline-secondary" onClick={onClickEdit}>編集</Button>
-      <Button variant="outline-secondary" onClick={onClickDelete}>削除</Button>
-    </InputGroup>
+    edited ? <TodoItemEdit
+                id={id}
+                text={text}
+                setEdited={setEdited}
+                todos={todos}
+                setTodos={setTodos}
+              />
+    :
+    <TodoItemShow
+      text={text}
+      completed={completed}
+      hadleCheckboxChange={hadleCheckboxChange}
+      onClickEdit={onClickEdit}
+      onClickDelete={onClickDelete}
+    />
   )
 
 }

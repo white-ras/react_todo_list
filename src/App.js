@@ -6,16 +6,7 @@ import { InputAndAddButton } from "./components/molecules/InputAndAddButton";
 import { useState } from "react";
 
 function App() {
-  const [todos, setTodos] = useState([
-    {
-      text:"ほげほげ",
-      completed: false
-    },
-    {
-      text:"ほえほえ",
-      completed: true
-    },
-  ]);
+  const [todos, setTodos] = useState([]);
 
   return (
     <>
